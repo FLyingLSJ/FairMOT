@@ -118,9 +118,9 @@ class opts(object):
 
     # mot
     self.parser.add_argument('--data_cfg', type=str,
-                             default='../src/lib/cfg/data.json',
+                             default='../src/lib/cfg/mot15.json',
                              help='load data from cfg')
-    self.parser.add_argument('--data_dir', type=str, default='/data/yfzhang/MOT/JDE')
+    self.parser.add_argument('--data_dir', type=str, default='/dli/dataset')
 
     # loss
     self.parser.add_argument('--mse_loss', action='store_true',

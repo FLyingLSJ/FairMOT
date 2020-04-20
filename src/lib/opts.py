@@ -56,7 +56,7 @@ class opts(object):
                                   '0 for no conv layer'
                                   '-1 for default setting: '
                                   '256 for resnets and 256 for dla.')
-    self.parser.add_argument('--down_ratio', type=int, default=4,
+    self.parser.add_argument('--down_ratio', type=int, default=4,   # 输出特征图的下采样率 H=H_image/4 and W=W_image/4
                              help='output stride. Currently only supports 4.')
 
     # input
@@ -199,18 +199,18 @@ class opts(object):
     return opt
 
   def update_dataset_info_and_set_heads(self, opt, dataset):
-    input_h, input_w = dataset.default_resolution
-    opt.mean, opt.std = dataset.mean, dataset.std
-    opt.num_classes = dataset.num_classes
+    input_h, input_w = dataset.default_resolution # 图片的高和宽
+    opt.mean, opt.std = dataset.mean, dataset.std # 均值 方差
+    opt.num_classes = dataset.num_classes # 类别数
 
     # input_h(w): opt.input_h overrides opt.input_res overrides dataset default
     input_h = opt.input_res if opt.input_res > 0 else input_h
     input_w = opt.input_res if opt.input_res > 0 else input_w
     opt.input_h = opt.input_h if opt.input_h > 0 else input_h
     opt.input_w = opt.input_w if opt.input_w > 0 else input_w
-    opt.output_h = opt.input_h // opt.down_ratio
+    opt.output_h = opt.input_h // opt.down_ratio # 输出特征图的大小
     opt.output_w = opt.input_w // opt.down_ratio
-    opt.input_res = max(opt.input_h, opt.input_w)
+    opt.input_res = max(opt.input_h, opt.input_w) 
     opt.output_res = max(opt.output_h, opt.output_w)
 
     if opt.task == 'mot':

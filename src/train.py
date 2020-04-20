@@ -23,11 +23,11 @@ def main(opt):
     torch.backends.cudnn.benchmark = not opt.not_cuda_benchmark and not opt.test
 
     print('Setting up data...')
-    Dataset = get_dataset(opt.dataset, opt.task)
-    f = open(opt.data_cfg)
+    Dataset = get_dataset(opt.dataset, opt.task) # if opt.task==mot -> JointDataset
+    f = open(opt.data_cfg) # 选择什么数据集进行训练测试 '../src/lib/cfg/mot15.json',
     data_config = json.load(f)
-    trainset_paths = data_config['train']
-    dataset_root = data_config['root']
+    trainset_paths = data_config['train'] # 训练集路径
+    dataset_root = data_config['root'] # 数据集所在目录
     f.close()
     transforms = T.Compose([T.ToTensor()])
     dataset = Dataset(opt, dataset_root, trainset_paths, (1088, 608), augment=True, transforms=transforms)

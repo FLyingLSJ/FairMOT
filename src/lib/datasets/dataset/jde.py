@@ -346,6 +346,9 @@ def collate_fn(batch):
 
 
 class JointDataset(LoadImagesAndLabels):  # for training
+    """
+    
+    """
     default_resolution = [1088, 608]
     mean = None
     std = None

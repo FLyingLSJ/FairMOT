@@ -285,7 +285,7 @@ python demo.py mot --load_model ../models/all_dla34.pth --conf_thres 0.4
 ![](https://cdn.nlark.com/yuque/0/2020/png/653487/1586931382784-6175c7b8-dee7-411f-b07b-c6133bc32fb0.png)
 
 
-可以在  FairMOT/results/frame 文件夹下查看视频每一帧的运行结果。
+可以在  FairMOT/results/frame 文件夹下查看视频每一帧（**第一帧没有结果**）的运行结果。
 
 
 ### 跟踪检测测试
